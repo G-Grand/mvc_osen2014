@@ -17,17 +17,13 @@ class ERApplication{
         }
         return self::$_instance;
     }
+
     public function init() {
         $this->_paths = $this->_mainCfg['application']['paths'];
         $this->setIncludePath($this->_paths);
         spl_autoload_register();
-        if(class_exists("FrontController")) {
-            $this->_fc = FrontController::getInstance();
-        }
-        $method = "parseUri";
-        if(method_exists($this->_fc,$method)) {
-            $this->_fc->$method();
-        }
+        $this->initFC();
+
     }
 
     private function setIncludePath(array $paths) {
@@ -37,6 +33,12 @@ class ERApplication{
         }
         set_include_path(get_include_path().$pathStr);
     }
+
+    private function initFC() {
+        if(class_exists("FrontController")) {
+            $this->_fc = FrontController::getInstance(); }
+    }
+
 
     public function getFC() {
         return $this->_fc;

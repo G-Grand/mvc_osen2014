@@ -4,7 +4,13 @@ use \Entity\User;
 
 class UserController implements IController {
 
-    public function findAction() {}
+    public function indexAction() {
+        echo "no action!";
+    }
+
+    public function findAction() {
+        echo "We found Yr user!";
+    }
 
     public function showAllAction() {}
 

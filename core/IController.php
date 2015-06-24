@@ -1,2 +1,4 @@
 <?php
-interface IController {}
+interface IController {
+    public function indexAction();
+}
