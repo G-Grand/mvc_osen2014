@@ -21,15 +21,16 @@ class FrontController {
         $ctrl = (isset($path[0])) ?  (ucfirst($path[0]) . "Controller") : "IndexController";
         $method = (isset($path[1])) ? ($path[1] . "Action") : "indexAction";
 
-        var_dump(get_declared_classes());
+//        var_dump(get_declared_classes());
 
-        if(!class_exists($ctrl)) {
+        if(class_exists($ctrl)) {
             $obj = new $ctrl();
-            var_dump(get_declared_classes());
+//            var_dump(get_declared_classes());
             if(method_exists($obj,$method)) {
                 $obj->$method();
             }else {
-                echo "АЙ ай ай !!! ";
+                $render = new RenderModel();
+                echo $render->render("404");
             }
         }else {
             echo "АЙ ай ай !!! ";

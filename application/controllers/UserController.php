@@ -16,7 +16,7 @@ class UserController implements IController {
 
     public function addAction(){
         $user = new User();
-        var_dump($user);
+//        var_dump($user);
     }
 
     public function updateAction() {}
